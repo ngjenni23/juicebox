@@ -50,12 +50,12 @@ async function createTables() {
         active BOOLEAN DEFAULT true
       );
       CREATE TABLE tags (
-        id, SERIAL PRIMARY KEY
-        name, VARCHAR(255) UNIQUE NOT NULL
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) UNIQUE NOT NULL
       );
       CREATE TABLE post_tags (
-        "postId", INTEGER REFERENCES posts(id)
-        "tagId", INTEGER REFERENCES tags(id)
+        "postId" INTEGER REFERENCES posts(id),
+        "tagId" INTEGER REFERENCES tags(id),
         Add a UNIQUE constraint on ("postId", "tagId")
       );
     `);
