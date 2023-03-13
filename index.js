@@ -1,3 +1,4 @@
+require('dotenv').config();
 const PORT = 3000;
 const express = require('express');
 const server = express();
@@ -22,4 +23,12 @@ server.use((req, res, next) => {
   console.log("<_____Body Logger END_____>");
 
   next();
+});
+
+server.get('/background/:color', (req, res, next) => {
+  res.send(`
+    <body style="background: ${ req.params.color };">
+      <h1>Hello World</h1>
+    </body>
+  `);
 });
